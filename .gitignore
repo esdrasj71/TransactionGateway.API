@@ -1,0 +1,13 @@
+﻿# User-specific secrets
+appsettings.Development.json
+
+# Build results
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+
+# Logs
+*.log
