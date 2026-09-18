@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using TransactionGateway.API.Configuration;
 using TransactionGateway.API.Data;
+using TransactionGateway.API.Middleware;
+using TransactionGateway.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.Configure<RateLimitSettings>(
+    builder.Configuration.GetSection("RateLimit"));
+
+builder.Services.AddSingleton<RedisService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,6 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<RateLimitingMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 
