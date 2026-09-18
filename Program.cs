@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TransactionGateway.API.Configuration;
+using TransactionGateway.API.Controllers;
 using TransactionGateway.API.Data;
+using TransactionGateway.API.Filters;
 using TransactionGateway.API.Middleware;
 using TransactionGateway.API.Services;
 
@@ -13,6 +15,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.Configure<RateLimitSettings>(
     builder.Configuration.GetSection("RateLimit"));
 
+builder.Services.Configure<IdempotencySettings>(
+    builder.Configuration.GetSection("Idempotency"));
+
+builder.Services.AddScoped<IdempotencyService>();
+builder.Services.AddScoped<IdempotencyFilter>();
 builder.Services.AddSingleton<RedisService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TransactionGateway.API.Data;
+using TransactionGateway.API.Filters;
 using TransactionGateway.API.Models;
 
 namespace TransactionGateway.API.Controllers
@@ -32,6 +33,7 @@ namespace TransactionGateway.API.Controllers
         }
 
         [HttpPost]
+        [Idempotent]
         public async Task<ActionResult<Transaction>> CreateTransaction(Transaction transaction)
         {
             _context.Transactions.Add(transaction);
