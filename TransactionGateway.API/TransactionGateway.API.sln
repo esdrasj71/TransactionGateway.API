@@ -5,7 +5,14 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionGateway.API", "TransactionGateway.API.csproj", "{20072DF5-BE58-4DB6-BE77-7EE07B22E19B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionGateway.API.Tests", "..\TransactionGateway.API.Tests\TransactionGateway.API.Tests.csproj", "{D59B316B-75D3-4E9B-934F-1ADBC28BD91E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionGateway.API.Tests", "..\TransactionGateway.API.Tests\TransactionGateway.API.Tests.csproj", "{D59B316B-75D3-4E9B-934F-1ADBC28BD91E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AD97561-CCD6-4002-8FF9-CDAF890BFEBB}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore.txt = .dockerignore.txt
+		docker-compose.yml = docker-compose.yml
+		Dockerfile.txt = Dockerfile.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
